@@ -1,0 +1,30 @@
+@layout('layouts.master')
+
+@section('styles')
+    {{ style('css/login') }}
+@endsection
+
+@section('body')
+
+    <form action="{{route('login')}}" method="POST">
+    <img src="{{ assetsUrl('img/logo.png') }}" alt="" class="img-fluid img-thumbnail mx-auto d-block">
+    {{ csrfField() }}
+        <div class="form-group">
+            <hr>
+            <h5>Helpdesk</h5>
+            <small id="emailHelp" class="form-text text-muted mb-2">Enter with sample logins (admin, operator or user).</small>
+            <input name="login" value="{{ old('login', '') }}" type="text" class="form-control form-control-sm" id="inputLogin" aria-describedby="emailHelp" placeholder="Login">
+        </div>
+        <div class="form-group">
+            <input name="password" type="password" class="form-control form-control-sm" id="inputPassword" placeholder="Password">
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block btn-sm">
+                <i class="fa fa-sign-in-alt"></i>
+                Sign in
+            </button>
+        </div>
+        <a href="#">Forgot the password?</a>
+    </form>
+
+@endsection

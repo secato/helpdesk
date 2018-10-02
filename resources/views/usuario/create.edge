@@ -1,0 +1,55 @@
+@layout('layouts.master')
+@section('body')
+<div  class="mx-auto" style="max-width: 600px;" >
+        <legend>
+        @if(usuario)
+            Edit user
+        @else
+            New user
+        @endif
+        </legend>
+        <hr>
+        <form action="{{ route('UsuarioController.store') }}" method="POST" id="form">
+            {{ csrfField() }}
+            <div class="form-group">
+                <label for="nome">Name</label>
+                <input type="text" value="{{ old('nome', '') }}" name="nome" class="form-control form-control-sm" placeholder="User name" required>
+                {{ elIf('<span class="text-danger">$self</span>', getErrorFor('nome'), hasErrorFor('nome')) }}
+            </div>
+            <div class="form-group">
+                <label for="login">Login</label>
+                <input type="text" value="{{ old('login', '') }}" name="login" class="form-control form-control-sm" placeholder="" required>
+                {{ elIf('<span class="text-danger">$self</span>', getErrorFor('login'), hasErrorFor('login')) }}
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-8">
+                    <label for="email">Email</label>
+                    <input type="email" value="{{ old('email', '') }}" name="email" class="form-control form-control-sm" required>
+                    {{ elIf('<span class="text-danger">$self</span>', getErrorFor('email'), hasErrorFor('email')) }}
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="funcao">Função</label>
+                    <select name="funcao" class="form-control form-control-sm custom-select" required>
+                            <option value="M">User</option>
+                            <option value="O">Operator</option>
+                            <option value="A">Administrator</option>
+                        </select>
+                    {{ elIf('<span class="text-danger">$self</span>', getErrorFor('funcao'), hasErrorFor('funcao')) }}
+                </div>
+            </div>
+            <hr>
+            @!component('components.btnVoltar', type='secondary btn-sm')
+            @!component('components.btnSalvar', type='primary btn-sm')
+        </form>
+</div>
+
+@if(usuario)
+    <script>
+        $("[name='nome']").val('{{usuario.nome}}')
+        $("[name='login']").val('{{usuario.login}}')
+        $("[name='email']").val('{{usuario.email}}')
+        $("[name='funcao']").val('{{usuario.funcao}}')
+        $('#form').attr('action', "{{ route('UsuarioController.update', {id: usuario.id}) }}?_method=PUT")
+    </script>
+@endif
+@endsection

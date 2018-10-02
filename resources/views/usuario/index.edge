@@ -1,0 +1,18 @@
+@layout('layouts.master') 
+@section('sidebar')
+    <a href="/usuarios/create" class="btn btn-dark btn-block">New User</a>
+    <div class="mt-3">
+        @!component('components.btnVoltar', type='primary', type2='block')
+    </div>
+@endsection 
+@section('mainContent')
+        {{ csrfField() }}
+        @!component('components.table', 
+            url ='/usuarios', 
+            resource ='/usuarios', 
+            cabecalho = ['#','Name', 'Login', 'Email', 'Role', 'Receive email?'],
+            colunas = ['id', 'nome', 'login', 'email', 'funcao', 'receberEmail'],
+            editar = true,
+            deletar = true
+        )
+@endsection

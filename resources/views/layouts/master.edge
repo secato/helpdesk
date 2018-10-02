@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+      @section('title')
+        Helpdesk
+      @endsection
+    </title>
+    <link rel="shortcut icon" href="{{assetsUrl('img/favicon.png')}}" type="image/x-icon">
+    {{ style('lib/css/bootstrap.min.css') }}
+    {{ style('lib/css/datatables.min.css') }} 
+    {{ style('lib/css/bootstrap-select.min.css') }}
+    {{ style('lib/css/alertify.min.css') }}
+    {{ style('lib/css/alertify.bootstrap.css') }}
+    {{ style('css/style.css') }} 
+    {{ style('lib/css/summernote-bs4.css') }}
+    @!section('styles')
+    {{ script('lib/js/jquery-3.3.1.min.js') }}
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
+      <a class="navbar-brand ml-2" href="{{ route('ChamadoController.index') }}">Helpdesk</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          @if(user)
+            <li class="nav-item">
+              <a href="/chamados/create" class="nav-link text-warning"><i class="fas fa-plus mr-2"></i>New Ticket</a>
+            </li>
+            <li class="nav-item">
+              <a href="/chamados/todos" class="nav-link text-info"><i class="fas fa-bars mr-2"></i>All Tickets</a>
+            </li>
+          @endif
+          @if(user.funcao === 'A')
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-th-list"></i> Register
+                <span class="sr-only">(current)</span>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{{ route('AreaController.index') }}">Areas</a>
+                <a class="dropdown-item" href="{{ route('ProblemaController.index') }}">Problems</a>
+                <a class="dropdown-item" href="{{ route('SetorController.index') }}">Departments</a>
+                <a class="dropdown-item" href="{{ route('PredioController.index') }}">Buildings</a>
+                <a class="dropdown-item" href="{{ route('StatusController.index') }}">Status</a>
+                <a class="dropdown-item" href="{{ route('UsuarioController.index') }}">Users</a>
+                <a class="dropdown-item" href="{{ route('ChamadoController.index') }}">Tickets</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a href="/atividades" class="nav-link"><i class="fas fa-chalkboard-teacher mr-2"></i>Activities</a>
+            </li>
+          @endif
+        </ul>
+          @if(user)
+          <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-user"></i>
+                {{user.nome}}
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
+                <a class="dropdown-item" href="{{ route('opcoes') }}">Options</a>
+              </div>
+            </li>
+          </ul>
+          @endif
+      </div>
+    </nav>
+<div class="container-fluid">
+  <br>
+  @!section('body')
+  <div class="row">
+    <div class="col-2">
+        @!section('sidebar')
+    </div>
+    <div class="col-10">
+        @!section('mainContent')
+    </div>    
+  </div>
+</div>
+<footer class="footer">
+  <div class="container-fluid border-top">
+    <span class="text-secondary">
+      &copy; 2018 - <a class="text-secondary" href="https://github.com/secato">Felipe Secato</a> - Github
+    </span>
+  </div>
+</footer>
+    {{ script('lib/js/popper.min.js') }}
+    {{ script('lib/js/bootstrap.min.js') }}
+    {{ script('lib/js/datatables.min.js') }}
+    {{ script('lib/js/bootstrap-select.min.js') }}
+    {{ script('lib/js/alertify.min.js') }}
+    {{ script('lib/js/solid.js') }}
+    {{ script('lib/js/fontawesome.js') }}
+    {{ script('lib/js/summernote-bs4.min.js') }}
+    @!section('scripts')
+    @if(flashMessage('notification'))
+    <script>
+      switch("{{flashMessage('type')}}") {
+        case "success":
+          alertify.success("{{flashMessage('notification')}}")
+          break;
+        case "normal":
+          alertify.message("{{flashMessage('notification')}}")
+          break;
+        case "warning":
+          alertify.warning("{{flashMessage('notification')}}")
+          break;
+        case "error":
+          alertify.error("{{flashMessage('notification')}}")
+          break;
+      }
+    </script>
+    @endif
+</body>
+</html>

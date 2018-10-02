@@ -1,0 +1,32 @@
+cache:
+  untracked: true
+  key: "CI_COMMIT_REF_NAME"
+  paths:
+    - node_modules/
+    - .env
+
+stages:
+  - build
+  - deploy
+
+build:
+  stage: build
+  before_script:
+    - envsubst < ".env.template" > ".env"
+    - npm i
+  script:
+    - adonis migration:run --force
+
+start:
+  stage: deploy
+  before_script:
+    - rm -Rf /home/sti/deploy/helpdesk/.[!.]* /home/sti/deploy/helpdesk/*
+    - rsync -arv --exclude={.env.example,.env.template,.gitignore,.editorconfig,.gitlab-ci.yml,.git/} . /home/sti/deploy/helpdesk
+    - cd /home/sti/deploy/helpdesk
+  script:
+    - npm start
+  environment:
+    name: production
+  when: manual
+  only:
+    - master
