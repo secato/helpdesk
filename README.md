@@ -23,7 +23,7 @@ The app is a simple server rendered web system for helpdesk, a simple ticket sys
 
 ## Try it
 
-You can try the app at [heroku](http://mirana.herokuapp.com)
+You can try the app at [heroku](https://mirana.herokuapp.com)
 
 Login with default users (no password required):
  - admin
@@ -37,6 +37,7 @@ Login with default users (no password required):
 - Need to paginate datatables result at server side
 
 
-
+### License
+GNU GENERAL PUBLIC LICENSE v3
 
 
