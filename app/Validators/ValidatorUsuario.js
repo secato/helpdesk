@@ -12,11 +12,11 @@ class ValidatorUsuario {
 
   get messages () {
     return {
-      'nome.required': 'O campo nome é obrigatório',
-      'login.required': 'O campo login é obrigatório',
-      'login.includes': 'O usuário deve seguir o padrão nome.sobrenome',
-      'email.required': 'O campo email é obrigatório',
-      'funcao.required': 'O campo função é obrigatório'
+      'nome.required': 'The name field is required',
+      'login.required': 'The name field is required and need to follow the pattern name.surname',
+      'login.includes': 'The name field is required and need to follow the pattern name.surname',
+      'email.required': 'The email field is required',
+      'funcao.required': 'The role field is required'
     }
   }
 

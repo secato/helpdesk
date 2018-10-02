@@ -2,7 +2,7 @@ module.exports = {
   apps: [{
     name: 'helpdesk',
     script: './server.js',
-    instances: 1,
+    instances: process.env.INSTANCES,
     exec_mode: 'cluster',
     merge_logs: true
   }]

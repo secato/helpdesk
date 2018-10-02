@@ -20,16 +20,16 @@
                     <div class="form-group col-md-6">
                         <label for="habilitado">Enabled</label>
                         <select name="habilitado" class="form-control form-control-sm custom-select" required>
-                            <option value="0">No</option>
-                            <option value="1">Yes</option>
+                            <option value="false">No</option>
+                            <option value="true">Yes</option>
                         </select>
                         {{ elIf('<span class="text-danger">$self</span>', getErrorFor('habilitado'), hasErrorFor('habilitado')) }}
                     </div>
                     <div class="form-group col-md-6">
                         <label for="habilitadoOperador">Allow Operator</label>
                         <select name="habilitadoOperador" class="form-control form-control-sm custom-select" required>
-                            <option value="0">No</option>
-                            <option value="1">Yes</option>
+                            <option value="false">No</option>
+                            <option value="true">Yes</option>
                         </select>
                         {{ elIf('<span class="text-danger">$self</span>', getErrorFor('habilitadoOperador'), hasErrorFor('habilitadoOperador')) }}
                     </div>

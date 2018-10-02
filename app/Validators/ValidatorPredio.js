@@ -10,8 +10,8 @@ class ValidatorPredio {
 
   get messages () {
     return {
-      'nome.required': 'O campo nome é obrigatório',
-      'descricao.min': 'O campo descrição deve ter mais de 8 caracteres'
+      'nome.required': 'The name field is required',
+      'descricao.min': 'The description field is required and nere more than 4 characters'
     }
   }
 

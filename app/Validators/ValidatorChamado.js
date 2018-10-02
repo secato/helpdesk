@@ -15,12 +15,12 @@ class ValidatorChamado {
 
   get messages () {
     return {
-      'descricao.required': 'O campo descrição é obrigatório',
-      'ramal.required': 'O campo ramal é obrigatório',
-      'status_id.required': 'O campo status é obrigatório',
-      'problema_id.required': 'O campo problema é obrigatório',
-      'predio_id.required': 'O campo prédio é obrigatório',
-      'local.required': 'O campo local é obrigatório'
+      'descricao.required': 'The description field is required',
+      'ramal.required': 'The phone field is required',
+      'status_id.required': 'The status field is required',
+      'problema_id.required': 'The problem field is required',
+      'predio_id.required': 'The building field is required',
+      'local.required': 'The local field is required'
     }
   }
 

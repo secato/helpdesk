@@ -9,7 +9,7 @@ class ValidatorArea {
 
   get messages () {
     return {
-      'nome.required': 'O campo nome é obrigatório'
+      'nome.required': 'The name field is required'
     }
   }
 

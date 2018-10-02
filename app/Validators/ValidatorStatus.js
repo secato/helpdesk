@@ -11,9 +11,9 @@ class ValidatorSetor {
 
   get messages () {
     return {
-      'nome.required': 'O campo nome é obrigatório',
-      'habilitado.required': 'O campo habilitado é obrigatório',
-      'habilitadoOperador.required': 'O campo habilitado operador é obrigatório'
+      'nome.required': 'The name field is required',
+      'habilitado.required': 'The enabled field is required',
+      'habilitadoOperador.required': 'The enabled operator field is required'
     }
   }
 

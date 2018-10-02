@@ -4,7 +4,7 @@ class ValidatorProblema {
   get rules () {
     return {
       nome: 'required',
-      dica: 'string|min:8',
+      dica: 'string|min:4',
       area_id: 'required',
       sla: 'required',
       prioridade: 'required|in:Normal,High,Urgent'
@@ -13,11 +13,11 @@ class ValidatorProblema {
 
   get messages () {
     return {
-      'nome.required': 'O campo nome é obrigatório',
-      'dica.min': 'O campo dica deve ter mais de 8 caracteres',
-      'area_id.required': 'O campo área é obrigatório',
-      'sla.required': 'O campo sla é obrigatório',
-      'prioridade.required': 'O campo prioridade é obrigatório'
+      'nome.required': 'The name field is required',
+      'dica.min': 'The hint field is required and need to have more than 4 characters',
+      'area_id.required': 'The area field is required',
+      'sla.required': 'The sla field is required',
+      'prioridade.required': 'The priority field is required'
     }
   }
 

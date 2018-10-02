@@ -4,16 +4,16 @@ class ValidatorSetor {
   get rules () {
     return {
       nome: 'required',
-      descricao: 'string|min:8',
+      descricao: 'string|min:4',
       centro: 'required'
     }
   }
 
   get messages () {
     return {
-      'nome.required': 'O campo nome é obrigatório',
-      'descricao.min': 'O campo descrição deve ter mais de 8 caracteres',
-      'centro.required': 'O campo centro é obrigatório'
+      'nome.required': 'The name field is required',
+      'descricao.min': 'The description field is required and need more than 4 characters',
+      'centro.required': 'The headquarter field is required'
     }
   }
 
